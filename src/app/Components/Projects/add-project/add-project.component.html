@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/projects"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Add Project</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-md="6" offset-md="3">
+                <ion-card>
+                    <ion-card-content>
+                        <app-loader *ngIf="showLoader"></app-loader>
+                        <form [formGroup]="this.modelService.project" [hidden]="showLoader">
+
+                            <ion-item>
+                                <ion-label position="floating">Name</ion-label>
+                                <ion-input type="text" formControlName="name"></ion-input>
+                            </ion-item>
+
+                            <ion-button (click)="addProject()" class="ion-margin-top" expand="block">Add Project
+                            </ion-button>
+
+                        </form>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

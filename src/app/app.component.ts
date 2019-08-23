@@ -10,11 +10,24 @@ import * as firebase from 'firebase';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  leftBrace: string = "{";
+  rightBrace: string = "}";
+
   public appPages = [
     {
       title: 'Dashboard',
       url: '/dashboard',
       icon: 'analytics'
+    },
+    {
+      title: 'Clients',
+      url: '/clients',
+      icon: 'people'
+    },
+    {
+      title: 'Projects',
+      url: '/projects',
+      icon: 'bug'
     },
     {
       title: 'Profile',

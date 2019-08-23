@@ -22,6 +22,18 @@ import { AuthService } from './Services/Auth/auth.service';
 import { LoginComponent } from './Components/Auth/login/login.component';
 import { ProfileComponent } from './Components/MainMenu/profile/profile.component';
 import { LoginSplashComponent } from './Components/Auth/login-splash/login-splash.component';
+import { AddProjectComponent } from './Components/Projects/add-project/add-project.component';
+import { ViewProjectsComponent } from './Components/Projects/view-projects/view-projects.component';
+import { EditProjectsComponent } from './Components/Projects/edit-projects/edit-projects.component';
+import { ProjectDetailsComponent } from './Components/Projects/project-details/project-details.component';
+import { AddClientComponent } from './Components/Clients/add-client/add-client.component';
+import { ViewClientsComponent } from './Components/Clients/view-clients/view-clients.component';
+import { EditClientsComponent } from './Components/Clients/edit-clients/edit-clients.component';
+import { ClientDetailsComponent } from './Components/Clients/client-details/client-details.component';
+import { ArchivedProjectsComponent } from './Components/Projects/archived-projects/archived-projects.component';
+import { ClientsService } from './Services/Clients/clients.service';
+import { ProjectService } from './Services/Projects/project.service';
+import { ModelsService } from './Models/models';
 
 
 
@@ -35,6 +47,17 @@ import { LoginSplashComponent } from './Components/Auth/login-splash/login-splas
     MenuHeaderComponent,
     BackHeaderComponent,
     LoaderComponent,
+    //Projects
+    AddProjectComponent,
+    ViewProjectsComponent,
+    EditProjectsComponent,
+    ProjectDetailsComponent,
+    ArchivedProjectsComponent,
+    //Clients
+    AddClientComponent,
+    ViewClientsComponent,
+    EditClientsComponent,
+    ClientDetailsComponent
   ],
   entryComponents: [
     MenuHeaderComponent,
@@ -47,16 +70,20 @@ import { LoginSplashComponent } from './Components/Auth/login-splash/login-splas
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     FormsModule,
-
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthService,
     CommonService,
+    ModelsService,
+    //Clients
+    ClientsService,
+    //Projects
+    ProjectService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
