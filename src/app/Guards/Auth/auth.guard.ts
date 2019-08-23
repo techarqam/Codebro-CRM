@@ -27,19 +27,9 @@ export class AuthGuard implements CanActivate {
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged((user: firebase.User) => {
         if (user) {
-
-          this.db.doc(`/Sellers/${user.uid}`).get().subscribe(snap => {
-            if (snap.exists) {
-              resolve(true);
-            } else {
-              this.authService.logout();
-              this.commonService.presentToast("You are not a Seller");
-              resolve(false)
-            }
-          })
+          resolve(true);
         } else {
-          this.navCtrl.navigateRoot(['/login']);
-          // this.commonService.presentToast("You are not Logged in");
+          this.navCtrl.navigateRoot(['/login-splash']);
           resolve(false);
         }
       });

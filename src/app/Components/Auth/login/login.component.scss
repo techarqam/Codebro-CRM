@@ -1,11 +1,36 @@
-.loginImage {
-    position: relative;
-    width: 50%;
-    margin-top: 100px;
-    margin: auto;
+.mainSlides {
+    height: 100%;
 }
 
-ion-card {
-    margin-top: 30%;
-    padding: 30px;
+.logo {
+    width: 50%;
+}
+
+
+
+
+
+.digit-group {
+    input {
+        width: 30px;
+        height: 50px;
+        border: none;
+        border-bottom: 1px solid black;
+        line-height: 50px;
+        text-align: center;
+        font-size: 24px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 200;
+        color: black;
+        margin: 0 2px;
+        margin-bottom: 30px;
+    }
+
+    .splitter {
+        padding: 0 2px;
+    }
+
+    .splitterMaj {
+        padding: 0 10px !important;
+    }
 }

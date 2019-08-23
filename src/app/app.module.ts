@@ -21,12 +21,14 @@ import { LoaderComponent } from './ExtraComps/loader/loader.component';
 import { AuthService } from './Services/Auth/auth.service';
 import { LoginComponent } from './Components/Auth/login/login.component';
 import { ProfileComponent } from './Components/MainMenu/profile/profile.component';
+import { LoginSplashComponent } from './Components/Auth/login-splash/login-splash.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginSplashComponent,
     LoginComponent,
     ProfileComponent,
     DashboardComponent,

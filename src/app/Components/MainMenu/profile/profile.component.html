@@ -1,4 +1,30 @@
 <app-menu-header name="Profile"></app-menu-header>
 
 <ion-content>
+
+    <div class="profileCard">
+
+        <!-- <app-loader *ngIf="picShowLoader"></app-loader> -->
+        <div class="profilePicture" *ngIf="!picShowLoader">
+            <div class="proContainer">
+                <label>
+                    <ion-input type="file" style="display: none;" (change)="fileChange($event)"
+                        accept="image/x-png,image/gif,image/jpeg"></ion-input>
+                    <img [src]="user.profilePicture" *ngIf="user.profilePicture" class="prof">
+                    <img src="assets/imgs/bot.png" *ngIf="!user.profilePicture">
+                    <ion-button size="small" shape="round" class="editProBtn">
+                        <ion-icon name="create"></ion-icon>
+                    </ion-button>
+                </label>
+            </div>
+        </div>
+
+
+        <br>
+        <h3>{{user.name}} </h3>
+        <p> {{user.phone}} </p>
+        <p> {{user.mail}} </p>
+
+    </div>
+
 </ion-content>

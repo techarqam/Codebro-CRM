@@ -5,6 +5,7 @@ import { ProfileComponent } from './Components/MainMenu/profile/profile.componen
 import { LoginComponent } from './Components/Auth/login/login.component';
 import { AuthGuard } from './Guards/Auth/auth.guard';
 import { NegAuthGuard } from './Guards/Auth/neg-auth.guard';
+import { LoginSplashComponent } from './Components/Auth/login-splash/login-splash.component';
 
 const routes: Routes = [
   {
@@ -16,17 +17,22 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login-splash',
+    component: LoginSplashComponent,
+    canActivate: [NegAuthGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [NegAuthGuard]
+    canActivate: [NegAuthGuard]
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
 
 ];

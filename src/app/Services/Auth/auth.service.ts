@@ -14,6 +14,33 @@ import { CommonService } from '../Common/common.service';
 export class AuthService {
 
 
+  signInPhone = new FormGroup({
+    phone: new FormControl("", Validators.compose([
+      Validators.required,
+      Validators.pattern("[1-9]{1}[0-9]{9}")
+    ])),
+  });
+
+  signInOtp = new FormGroup({
+    digit1: new FormControl("", Validators.compose([
+      Validators.required,
+    ])),
+    digit2: new FormControl("", Validators.compose([
+      Validators.required,
+    ])),
+    digit3: new FormControl("", Validators.compose([
+      Validators.required,
+    ])),
+    digit4: new FormControl("", Validators.compose([
+      Validators.required,
+    ])),
+    digit5: new FormControl("", Validators.compose([
+      Validators.required,
+    ])),
+    digit6: new FormControl("", Validators.compose([
+      Validators.required,
+    ])),
+  });
 
 
 
@@ -21,28 +48,29 @@ export class AuthService {
 
   constructor(
     private fireAuth: AngularFireAuth,
-    private firestore: AngularFirestore,
-    public commonService: CommonService,
+    private db: AngularFirestore,
   ) {
+  }
+
+
+  getUser(id) {
+    return this.db.collection("Users").doc(id).snapshotChanges();
   }
 
 
   isLoggedIn() {
     return this.fireAuth.authState.pipe(first())
   }
-
-  loginM(data) {
-    return this.fireAuth.auth.signInWithEmailAndPassword(data.email, data.pass)
-  }
-
-
-
-
   logout() {
     return this.fireAuth.auth.signOut();
   }
+  uploadProfilePic(data, image) {
+    return firebase.storage().ref("Users/" + data.id + "/" + data.name).put(image).then(() => {
+      firebase.storage().ref("Users/" + data.id + "/" + data.name).getDownloadURL().then((dURL) => {
+        this.db.collection("Users").doc(data.id)
+          .set({ profilePicture: dURL }, { merge: true });
+      })
+    })
 
-  getProfile() {
-    return this.firestore.doc(`Users/${firebase.auth().currentUser.uid}`).snapshotChanges();
   }
 }
