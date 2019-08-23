@@ -1,0 +1,37 @@
+.activeHighlight {
+    border-right: #3880ff 5px solid !important;
+    color: #3880ff;
+
+    ion-icon {
+        color: #3880ff;
+    }
+}
+
+.tableTop {
+    background: #3880ff;
+    color: white !important;
+}
+
+.tableText {
+    font-size: 12px;
+}
+
+h2 {
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+}
+
+.noData {
+    text-align: center;
+
+    h2 {
+        color: grey;
+        font-size: 24px;
+    }
+
+    img {
+        width: 200px;
+        margin: auto;
+    }
+}

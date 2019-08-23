@@ -1,0 +1,7 @@
+{
+  "name": "codebro-crm",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
