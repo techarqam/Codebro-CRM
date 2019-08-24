@@ -49,10 +49,14 @@ export class ModelsService {
         type: new FormControl("", Validators.compose([
             Validators.required,
         ])),
-        client: new FormControl("", Validators.compose([
+        description: new FormControl(""),
+        client: new FormControl(""),
+        status: new FormControl("Pending"),
+        assignTo: new FormControl(firebase.auth().currentUser.uid),
+        assignedBy: new FormControl(firebase.auth().currentUser.uid),
+        dueTime: new FormControl(moment().format(), Validators.compose([
             Validators.required,
         ])),
-        user: new FormControl(firebase.auth().currentUser.uid),
         timestamp: new FormControl(moment().format())
     });
     message = new FormGroup({

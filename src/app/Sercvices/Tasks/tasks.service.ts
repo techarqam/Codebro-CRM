@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-
+import * as firebase from 'firebase'
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +14,11 @@ export class TasksService {
   addTask(task) {
     return this.dbRef.add(task);
   }
-  getTasks() {
-    return this.dbRef.snapshotChanges();
+  getAssignedToTasks() {
+    return this.db.collection(`Tasks`, ref => ref.where("assignTo", "==", firebase.auth().currentUser.uid).orderBy('timestamp', 'desc')).snapshotChanges();
+  }
+  getassignedByTasks() {
+    return this.db.collection(`Tasks`, ref => ref.where("assignedBy", "==", firebase.auth().currentUser.uid).orderBy('timestamp', 'desc')).snapshotChanges();
   }
   getSingleTask(taskId) {
     return this.dbRef.doc(taskId).snapshotChanges();

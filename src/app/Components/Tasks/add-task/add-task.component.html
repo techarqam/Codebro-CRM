@@ -34,6 +34,28 @@
                 </ion-select>
               </ion-item>
 
+              <ion-item>
+                <ion-label position="floating">Date</ion-label>
+                <ion-datetime formControlName="dueTime" displayFormat="DD MMM h:mm a">
+                </ion-datetime>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Assign To</ion-label>
+                <ion-select formControlName="assignTo">
+                  <ion-select-option [value]="u.id" *ngFor="let u of users">
+                    {{u.name}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Description</ion-label>
+                <ion-textarea formControlName="description">
+                </ion-textarea>
+              </ion-item>
+
+
               <ion-button (click)="addTask()" class="ion-margin-top" expand="block">
                 Add Task
               </ion-button>

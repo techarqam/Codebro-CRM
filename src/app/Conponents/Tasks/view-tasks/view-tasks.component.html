@@ -1,31 +1,54 @@
 <app-menu-header name="Tasks"></app-menu-header>
 <ion-content>
-  <ion-grid [hidden]="showLoader">
-    <ion-row>
-      <ion-col size-md="9" size="12">
-        <ion-searchbar [(ngModel)]="searchBar" (ionChange)="getItems(searchBar)" placeholder="Search by Task's Name"
-          type="text">
-        </ion-searchbar>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-  <app-loader *ngIf="showLoader"></app-loader>
-  <p class="nodata" [hidden]="showLoader" *ngIf="!tasks.length">No Tasks</p>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" size-md="3" *ngFor="let t of tasks" (click)="gtDetails(t)" [hidden]="showLoader">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{t.type}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p class="timestamp">{{t.timestamp}}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="assignedTo" checked>
+      <ion-label>Assigned To</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="assignedBy">
+      <ion-label>Assigned By</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="showAssignedTo">
+    <app-loader *ngIf="showLoader"></app-loader>
+    <p class="nodata" [hidden]="showLoader" *ngIf="!assignedToTasks.length">No tasks Assigned to you</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="3" *ngFor="let t of assignedToTasks" (click)="gtDetails(t)" [hidden]="showLoader">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{t.type}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p class="timestamp">{{t.timestamp}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="showAssignedBy">
+    <app-loader *ngIf="showLoader"></app-loader>
+    <p class="nodata" [hidden]="showLoader" *ngIf="!assignedByTasks.length">No tasks Assigned by you</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="3" *ngFor="let t of assignedByTasks" (click)="gtDetails(t)" [hidden]="showLoader">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{t.type}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p class="timestamp">{{t.timestamp}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/add-task">

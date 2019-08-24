@@ -42,13 +42,6 @@ export class TaskDetailComponent implements OnInit {
     const alert = await this.alertCtrl.create({
       header: "Delete" + " " + this.client.name,
       message: 'This action cannot be reversed',
-      inputs: [
-        {
-          name: 'name',
-          type: 'text',
-          placeholder: 'Client Name',
-        },
-      ],
       buttons: [
         {
           text: 'Cancel',
@@ -58,12 +51,7 @@ export class TaskDetailComponent implements OnInit {
         }, {
           text: 'Delete',
           handler: data => {
-            if (data.name.toLowerCase() == this.client.name.toLowerCase()) {
-              this.deleteTask();
-            } else {
-              this.commonService.presentToast("Client Name not Valid");
-            }
-            this.alertCtrl.dismiss();
+            this.commonService.presentToast("Client Name not Valid");
           }
         }
       ]
@@ -80,9 +68,11 @@ export class TaskDetailComponent implements OnInit {
     })
   }
   getClient(id) {
-    this.clientService.getSingleClient(id).subscribe(snap => {
-      this.client = snap.payload.data();
-      this.client.id = snap.payload.id;
-    })
+    if (id) {
+      this.clientService.getSingleClient(id).subscribe(snap => {
+        this.client = snap.payload.data();
+        this.client.id = snap.payload.id;
+      })
+    }
   }
 }

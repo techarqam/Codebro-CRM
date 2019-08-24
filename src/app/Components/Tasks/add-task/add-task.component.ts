@@ -6,6 +6,7 @@ import { NavController } from '@ionic/angular';
 import { TasksService } from '../../../Sercvices/Tasks/tasks.service';
 import { ClientsService } from '../../../Services/Clients/clients.service';
 import * as firebase from 'firebase';
+import { MessagingService } from '../../../Services/Messaging/messaging.service';
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
@@ -15,17 +16,20 @@ export class AddTaskComponent implements OnInit {
 
   showLoader: boolean = false;
   clients: Array<any> = [];
+  users: Array<any> = [];
   constructor(
     public modelService: ModelsService,
     public clientService: ClientsService,
+    public messagingService: MessagingService,
     public commonService: CommonService,
     public taskService: TasksService,
     public navCtrl: NavController,
   ) {
     this.getClients();
+    this.getUsers();
   }
 
-  types: Array<any> = ["Meeting", "Called", "Call Recieved", "Send Quotation", "Send Invoice",];
+  types: Array<any> = ["Meeting", "Called", "Call Recieved", "Send Quotation", "Send Invoice", "Custom"];
   ngOnInit() { }
   addTask() {
     let data = this.modelService.task.value;
@@ -34,7 +38,11 @@ export class AddTaskComponent implements OnInit {
       this.taskService.addTask(data).then(() => {
         this.modelService.task.reset();
         this.modelService.project.patchValue({
+          assignTo: firebase.auth().currentUser.uid,
+          assignedBy: firebase.auth().currentUser.uid,
           user: firebase.auth().currentUser.uid,
+          dueTime: moment().format(),
+          status: "Pending",
           timestamp: moment().format()
         });
         this.navCtrl.navigateRoot('/all-tasks');
@@ -55,6 +63,19 @@ export class AddTaskComponent implements OnInit {
         tempArray.push(temp);
       })
       this.clients = tempArray;
+    });
+  }
+
+  getUsers() {
+    this.showLoader = true;
+    this.messagingService.getUsers().subscribe(snap => {
+      this.users = [];
+      snap.forEach(snip => {
+        let temp: any = snip.payload.doc.data();
+        temp.id = snip.payload.doc.id;
+        this.users.push(temp)
+      })
+      this.showLoader = false;
     });
   }
 
