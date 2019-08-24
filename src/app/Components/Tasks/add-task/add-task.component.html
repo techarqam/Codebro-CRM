@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/all-tasks"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" offset-md="3">
+        <ion-card>
+          <ion-card-content>
+            <app-loader *ngIf="showLoader"></app-loader>
+            <form [formGroup]="this.modelService.task" [hidden]="showLoader">
+
+              <ion-item>
+                <ion-label position="floating">Task Type</ion-label>
+                <ion-select formControlName="type">
+                  <ion-select-option [value]="t" *ngFor="let t of types">
+                    {{t}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+
+              <ion-item>
+                <ion-label position="floating">Client</ion-label>
+                <ion-select formControlName="client">
+                  <ion-select-option [value]="c.id" *ngFor="let c of clients">
+                    {{c.name}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-button (click)="addTask()" class="ion-margin-top" expand="block">
+                Add Task
+              </ion-button>
+
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

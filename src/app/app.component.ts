@@ -20,6 +20,11 @@ export class AppComponent {
       icon: 'analytics'
     },
     {
+      title: 'Timeline',
+      url: '/timeline',
+      icon: 'pulse'
+    },
+    {
       title: 'Clients',
       url: '/clients',
       icon: 'people'
@@ -28,6 +33,21 @@ export class AppComponent {
       title: 'Projects',
       url: '/projects',
       icon: 'bug'
+    },
+    {
+      title: 'Tasks',
+      url: '/all-tasks',
+      icon: 'hammer'
+    },
+    {
+      title: 'Messaging',
+      url: '/messaging',
+      icon: 'chatbubbles'
+    },
+    {
+      title: 'Files',
+      url: '/all-files',
+      icon: 'document'
     },
     {
       title: 'Profile',

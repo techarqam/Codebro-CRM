@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/all-files"></ion-back-button>
+    </ion-buttons>
+    <ion-title>File Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-loader *ngIf="showLoader"></app-loader>
+  <ion-card [hidden]="showLoader">
+    <ion-card-header>
+      <ion-card-title>{{file.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Project</ion-label>
+        <p slot="end">{{project.name}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Created</ion-label>
+        <p slot="end">{{file.timestamp}}</p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" fill="clear" color="danger" (click)="deleteFileConfirm()">
+    <ion-icon class="ion-margin-end" name="trash"></ion-icon>
+    Delete File
+  </ion-button>
+</ion-content>

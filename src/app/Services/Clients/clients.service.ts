@@ -26,4 +26,8 @@ export class ClientsService {
   delClients(clientId) {
     return this.dbRef.doc(clientId).delete();
   }
+  getClientProjects(clientId) {
+    return this.db.collection(`Projects`, ref => ref.where("client", "==", clientId).orderBy('timestamp', 'desc')).snapshotChanges();
+  }
+
 }

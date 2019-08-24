@@ -13,7 +13,9 @@ export class ProjectService {
   ) { }
 
   addProject(project) {
-    return this.dbRef.add(project);
+    return this.dbRef.add(project).then(newProj => {
+      return newProj.id;
+    });
   }
   getProjects() {
     return this.db.collection(`Projects`, ref => ref.where("archived", "==", false).orderBy('timestamp', 'desc')).snapshotChanges();
@@ -30,10 +32,13 @@ export class ProjectService {
   getArchivedProjects() {
     return this.db.collection(`Projects`, ref => ref.where("archived", "==", true).orderBy('timestamp', 'desc')).snapshotChanges();
   }
-  archiveProject(id) {
-    return this.db.collection('Projects').doc(id).update({ archived: true });
+  archiveProject(projectId) {
+    return this.db.collection('Projects').doc(projectId).update({ archived: true });
   }
-  unArchiveProject(id) {
-    return this.db.collection('Projects').doc(id).update({ archived: false });
+  unArchiveProject(projectId) {
+    return this.db.collection('Projects').doc(projectId).update({ archived: false });
+  }
+  getFiles(projectId) {
+    return this.db.collection('Files', ref => ref.where("project", "==", projectId)).snapshotChanges();
   }
 }

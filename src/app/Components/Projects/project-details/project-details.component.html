@@ -25,12 +25,22 @@
         <ion-card-content>
             <ion-list lines="none">
                 <ion-item>
-                    <p slot="start">Status</p>
+                    <ion-label>Client</ion-label>
+                    <p slot="end">{{client.name}}</p>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Status</ion-label>
                     <p slot="end">{{project.archivedStatus}}</p>
                 </ion-item>
             </ion-list>
         </ion-card-content>
     </ion-card>
+    <ion-list>
+        <ion-item (click)="gtFiles()">
+            <p slot="start">Files</p>
+            <ion-icon name="arrow-dropright" slot="end"></ion-icon>
+        </ion-item>
+    </ion-list>
     <ion-button expand="block" fill="clear" color="danger" (click)="deleteProjectConfirm()">
         <ion-icon class="ion-margin-end" name="trash"></ion-icon>
         Delete Project

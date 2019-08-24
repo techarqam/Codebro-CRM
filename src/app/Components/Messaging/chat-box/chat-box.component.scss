@@ -1,0 +1,36 @@
+.talk-bubble-right {
+    display: block;
+    position: relative;
+    height: auto;
+    // border-radius: 30px;
+    max-width: 60%;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    background-color: #3DDC9F;
+    color: white;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin: 8px;
+}
+
+.talk-bubble-left {
+    display: block;
+    position: relative;
+    height: auto;
+    // border-radius: 30px;
+    max-width: 60%;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    background-color: white;
+    color: blacks;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin: 8px;
+}
+
+ion-content {
+    --background: #EFF0F9 !important;
+    ion-item {
+        --background: #EFF0F9 !important;
+    }
+}

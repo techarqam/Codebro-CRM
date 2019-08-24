@@ -14,14 +14,17 @@
         </ion-card-header>
         <ion-card-content>
             <ion-list lines="none">
-                <ion-item>
-                    <p slot="start">Status</p>
-                    <p slot="end">{{client.archivedStatus}}</p>
+                <ion-list-header>
+                    <ion-label>Projects</ion-label>
+                </ion-list-header>
+                <ion-item *ngFor="let p of projects" (click)="gtDetails(p)">
+                    <ion-label>{{p.name}}</ion-label>
+                    <!-- <p slot="end">{{client.archivedStatus}}</p> -->
                 </ion-item>
             </ion-list>
         </ion-card-content>
     </ion-card>
-    <ion-button expand="block" fill="clear" color="danger" (click)="deleteClientConfirm()">
+    <ion-button expand="block" fill="clear" [hidden]="showLoader" color="danger" (click)="deleteClientConfirm()">
         <ion-icon class="ion-margin-end" name="trash"></ion-icon>
         Delete Client
     </ion-button>

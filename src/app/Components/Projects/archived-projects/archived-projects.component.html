@@ -7,7 +7,9 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-card *ngFor="let p of projects" (click)="gtDetails(p)">
+    <app-loader *ngIf="showLoader"></app-loader>
+    <p class="nodata" [hidden]="showLoader" *ngIf="!projects.length">No Archived Projects</p>
+    <ion-card *ngFor="let p of projects" (click)="gtDetails(p)" [hidden]="showLoader">
         <ion-card-header>
             <ion-card-title>{{p.name}}</ion-card-title>
         </ion-card-header>

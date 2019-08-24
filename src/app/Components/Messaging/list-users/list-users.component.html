@@ -1,0 +1,30 @@
+<app-menu-header name="Messaging"></app-menu-header>
+<ion-content>
+  <ion-grid [hidden]="showLoader">
+    <ion-row>
+      <ion-col size-md="9" size="12">
+        <ion-searchbar [(ngModel)]="searchBar" (ionChange)="getItems(searchBar)" placeholder="Search by Users's Name"
+          type="text">
+        </ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-loader *ngIf="showLoader"></app-loader>
+  <p class="nodata" [hidden]="showLoader" *ngIf="!users.length">No Users</p>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="3" *ngFor="let u of users" (click)="gtChat(u)" [hidden]="showLoader">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{u.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- <p class="timestamp">{{u.timestamp}}</p> -->
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

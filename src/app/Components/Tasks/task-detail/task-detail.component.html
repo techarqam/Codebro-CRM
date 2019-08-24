@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/all-tasks"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Task Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <app-loader *ngIf="showLoader"></app-loader>
+  <ion-card [hidden]="showLoader">
+    <ion-card-header>
+      <ion-card-title>{{task.type}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>Client</ion-label>
+          <p slot="end">{{client.name}}</p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" fill="clear" color="danger" (click)="deleteTaskConfirm()">
+    <ion-icon class="ion-margin-end" name="trash"></ion-icon>
+    Delete Task
+  </ion-button>
+</ion-content>

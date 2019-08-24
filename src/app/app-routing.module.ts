@@ -15,6 +15,18 @@ import { ViewProjectsComponent } from './Components/Projects/view-projects/view-
 import { AddProjectComponent } from './Components/Projects/add-project/add-project.component';
 import { EditProjectsComponent } from './Components/Projects/edit-projects/edit-projects.component';
 import { ProjectDetailsComponent } from './Components/Projects/project-details/project-details.component';
+import { ViewFilesComponent } from './Components/Files/view-files/view-files.component';
+import { AddFileComponent } from './Components/Files/add-file/add-file.component';
+import { EditFileComponent } from './Components/Files/edit-file/edit-file.component';
+import { FileDetailsComponent } from './Components/Files/file-details/file-details.component';
+import { ProjectFilesComponent } from './Components/Project/project-files/project-files.component';
+import { MainTimelineComponent } from './Components/Timeline/main-timeline/main-timeline.component';
+import { ViewTasksComponent } from './Conponents/Tasks/view-tasks/view-tasks.component';
+import { AddTaskComponent } from './Components/Tasks/add-task/add-task.component';
+import { EditTaskComponent } from './Conponents/Tasks/edit-task/edit-task.component';
+import { TaskDetailComponent } from './Components/Tasks/task-detail/task-detail.component';
+import { ListUsersComponent } from './Components/Messaging/list-users/list-users.component';
+import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.component';
 
 const routes: Routes = [
   {
@@ -86,13 +98,74 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'project-files/:id',
+    component: ProjectFilesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'archived-projects',
     component: ArchivedProjectsComponent,
     canActivate: [AuthGuard]
   },
-
-
-
+  //Files
+  {
+    path: 'all-files',
+    component: ViewFilesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-file',
+    component: AddFileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-file',
+    component: EditFileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'file-details/:id',
+    component: FileDetailsComponent,
+    canActivate: [AuthGuard]
+  },
+  //Timeline
+  {
+    path: 'timeline',
+    component: MainTimelineComponent,
+    canActivate: [AuthGuard]
+  },
+  //Tasks
+  {
+    path: 'all-tasks',
+    component: ViewTasksComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-task',
+    component: AddTaskComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-task',
+    component: EditTaskComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'task-details/:id',
+    component: TaskDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  //Messaging
+  {
+    path: 'messaging',
+    component: ListUsersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'chat-box/:id',
+    component: ChatBoxComponent,
+    canActivate: [AuthGuard]
+  },
 
 ];
 

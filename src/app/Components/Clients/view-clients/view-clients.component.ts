@@ -60,5 +60,10 @@ export class ViewClientsComponent implements OnInit {
   gtDetails(c) {
     this.navCtrl.navigateRoot(`/client-details/${c.id}`);
   }
-
+  callClient(c) {
+    window.location.href = 'tel:' + c.phone;
+  }
+  whatsappClient(c) {
+    // window.location.href = "whatsapp//send?phone=" + c.phone;
+  }
 }

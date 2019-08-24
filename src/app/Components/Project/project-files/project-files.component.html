@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defHref"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{project.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid [hidden]="showLoader">
+    <ion-row>
+      <ion-col size-md="9" size="12">
+        <ion-searchbar [(ngModel)]="searchBar" (ionChange)="getItems(searchBar)" placeholder="Search by File Name"
+          type="text">
+        </ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-loader *ngIf="showLoader"></app-loader>
+  <p class="nodata" [hidden]="showLoader" *ngIf="!files.length">No Files</p>
+  <ion-card *ngFor="let f of files" (click)="gtDetails(f)" [hidden]="showLoader">
+    <ion-card-header>
+      <ion-card-title>{{f.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="timestamp">{{f.timestamp}}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

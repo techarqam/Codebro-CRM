@@ -4,6 +4,7 @@ import { CommonService } from '../../../Services/Common/common.service';
 import { ClientsService } from '../../../Services/Clients/clients.service';
 import { NavController } from '@ionic/angular';
 import * as moment from 'moment';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-add-client',
@@ -29,6 +30,7 @@ export class AddClientComponent implements OnInit {
       this.clientService.addClient(data).then(() => {
         this.modelService.client.reset();
         this.modelService.project.patchValue({
+          user: firebase.auth().currentUser.uid,
           timestamp: moment().format()
         });
         this.navCtrl.navigateRoot('/clients');

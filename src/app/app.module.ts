@@ -34,6 +34,21 @@ import { ArchivedProjectsComponent } from './Components/Projects/archived-projec
 import { ClientsService } from './Services/Clients/clients.service';
 import { ProjectService } from './Services/Projects/project.service';
 import { ModelsService } from './Models/models';
+import { FilesService } from './Services/Files/files.service';
+import { FileDetailsComponent } from './Components/Files/file-details/file-details.component';
+import { ViewFilesComponent } from './Components/Files/view-files/view-files.component';
+import { AddFileComponent } from './Components/Files/add-file/add-file.component';
+import { EditFileComponent } from './Components/Files/edit-file/edit-file.component';
+import { ProjectFilesComponent } from './Components/Project/project-files/project-files.component';
+import { MainTimelineComponent } from './Components/Timeline/main-timeline/main-timeline.component';
+import { ViewTasksComponent } from './Conponents/Tasks/view-tasks/view-tasks.component';
+import { AddTaskComponent } from './Components/Tasks/add-task/add-task.component';
+import { EditTaskComponent } from './Conponents/Tasks/edit-task/edit-task.component';
+import { TaskDetailComponent } from './Components/Tasks/task-detail/task-detail.component';
+import { TasksService } from './Sercvices/Tasks/tasks.service';
+import { MessagingService } from './Services/Messaging/messaging.service';
+import { ListUsersComponent } from './Components/Messaging/list-users/list-users.component';
+import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.component';
 
 
 
@@ -52,12 +67,28 @@ import { ModelsService } from './Models/models';
     ViewProjectsComponent,
     EditProjectsComponent,
     ProjectDetailsComponent,
+    ProjectFilesComponent,
     ArchivedProjectsComponent,
     //Clients
     AddClientComponent,
     ViewClientsComponent,
     EditClientsComponent,
-    ClientDetailsComponent
+    ClientDetailsComponent,
+    //Files
+    AddFileComponent,
+    EditFileComponent,
+    ViewFilesComponent,
+    FileDetailsComponent,
+    //Timeline
+    MainTimelineComponent,
+    //Tasks
+    ViewTasksComponent,
+    AddTaskComponent,
+    EditTaskComponent,
+    TaskDetailComponent,
+    //Messaging
+    ListUsersComponent,
+    ChatBoxComponent,
   ],
   entryComponents: [
     MenuHeaderComponent,
@@ -80,10 +111,11 @@ import { ModelsService } from './Models/models';
     AuthService,
     CommonService,
     ModelsService,
-    //Clients
     ClientsService,
-    //Projects
     ProjectService,
+    FilesService,
+    TasksService,
+    MessagingService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]

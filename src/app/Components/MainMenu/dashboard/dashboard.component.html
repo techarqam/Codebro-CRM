@@ -1,3 +1,24 @@
 <app-menu-header name="Dashboard"></app-menu-header>
 <ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6" size-md="2">
+                <ion-card>
+                    <ion-card-content>
+                        <p class="mNum">{{totProjects}}</p>
+                        <p class="mText">Projects</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col size="6" size-md="2">
+                <ion-card>
+                    <ion-card-content>
+                        <p class="mNum">{{totClients}}</p>
+                        <p class="mText">CLients</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 </ion-content>
