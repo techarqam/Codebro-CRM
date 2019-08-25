@@ -49,6 +49,10 @@ import { TasksService } from './Sercvices/Tasks/tasks.service';
 import { MessagingService } from './Services/Messaging/messaging.service';
 import { ListUsersComponent } from './Components/Messaging/list-users/list-users.component';
 import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.component';
+import { FCM } from '@ionic-native/fcm/ngx';
+import { NotificationsService } from './Services/notifications.service';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
 
 
@@ -103,6 +107,8 @@ import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.compo
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
+    AngularFireMessagingModule,
+    AngularFireFunctionsModule,
     FormsModule,
   ],
   providers: [
@@ -116,6 +122,8 @@ import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.compo
     FilesService,
     TasksService,
     MessagingService,
+    FCM,
+    NotificationsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
