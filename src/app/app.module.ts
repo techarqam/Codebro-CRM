@@ -50,9 +50,9 @@ import { MessagingService } from './Services/Messaging/messaging.service';
 import { ListUsersComponent } from './Components/Messaging/list-users/list-users.component';
 import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.component';
 import { FCM } from '@ionic-native/fcm/ngx';
-import { NotificationsService } from './Services/notifications.service';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { NotificationsService } from './Services/Notifications/notifications.service';
 
 
 

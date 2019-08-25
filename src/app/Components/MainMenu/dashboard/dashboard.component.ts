@@ -5,7 +5,7 @@ import { AuthService } from '../../../Services/Auth/auth.service';
 import { ProjectService } from '../../../Services/Projects/project.service';
 import { ClientsService } from '../../../Services/Clients/clients.service';
 import { Chart } from "chart.js";
-import { NotificationsService } from 'src/app/Services/notifications.service';
+import { NotificationsService } from 'src/app/Services/Notifications/notifications.service';
 
 @Component({
   selector: 'app-dashboard',

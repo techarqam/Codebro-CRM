@@ -3,7 +3,7 @@ import { Platform, AlertController, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './Services/Auth/auth.service';
-import { NotificationsService } from './Services/notifications.service';
+import { NotificationsService } from './Services/Notifications/notifications.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
