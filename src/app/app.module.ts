@@ -41,14 +41,16 @@ import { AddFileComponent } from './Components/Files/add-file/add-file.component
 import { EditFileComponent } from './Components/Files/edit-file/edit-file.component';
 import { ProjectFilesComponent } from './Components/Project/project-files/project-files.component';
 import { MainTimelineComponent } from './Components/Timeline/main-timeline/main-timeline.component';
-import { ViewTasksComponent } from './Conponents/Tasks/view-tasks/view-tasks.component';
 import { AddTaskComponent } from './Components/Tasks/add-task/add-task.component';
-import { EditTaskComponent } from './Conponents/Tasks/edit-task/edit-task.component';
 import { TaskDetailComponent } from './Components/Tasks/task-detail/task-detail.component';
-import { TasksService } from './Sercvices/Tasks/tasks.service';
 import { MessagingService } from './Services/Messaging/messaging.service';
 import { ListUsersComponent } from './Components/Messaging/list-users/list-users.component';
 import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.component';
+import { TasksService } from './Services/Tasks/tasks.service';
+import { ViewTasksComponent } from './Components/Tasks/view-tasks/view-tasks.component';
+import { EditTaskComponent } from './Components/Tasks/edit-task/edit-task.component';
+import { CalendarComponent } from './Components/Calendar/calendar/calendar.component';
+import { CalendarService } from './Services/Calendar/calendar.service';
 
 
 
@@ -89,6 +91,8 @@ import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.compo
     //Messaging
     ListUsersComponent,
     ChatBoxComponent,
+    // Calendar
+    CalendarComponent,
   ],
   entryComponents: [
     MenuHeaderComponent,
@@ -116,6 +120,7 @@ import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.compo
     FilesService,
     TasksService,
     MessagingService,
+    CalendarService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]

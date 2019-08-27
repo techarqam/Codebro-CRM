@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
 import { CommonService } from '../../../Services/Common/common.service';
-import * as moment from 'moment';
-import { TasksService } from '../../../Sercvices/Tasks/tasks.service';
 import { ClientsService } from '../../../Services/Clients/clients.service';
+import { TasksService } from 'src/app/Services/Tasks/tasks.service';
 
 @Component({
   selector: 'app-task-detail',

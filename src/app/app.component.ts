@@ -12,7 +12,13 @@ import * as firebase from 'firebase';
 export class AppComponent {
   leftBrace: string = "{";
   rightBrace: string = "}";
-
+  pendingTasks = [
+    "Timeline Addition",
+    "Notifications",
+    "Chat order",
+    "dashboard task chart",
+    "generating documents",
+  ]
   public appPages = [
     {
       title: 'Dashboard',
@@ -33,6 +39,11 @@ export class AppComponent {
       title: 'Projects',
       url: '/projects',
       icon: 'bug'
+    },
+    {
+      title: 'Calendar',
+      url: '/calendar',
+      icon: 'calendar'
     },
     {
       title: 'Tasks',

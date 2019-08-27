@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TasksService } from '../../../Sercvices/Tasks/tasks.service';
 import { NavController } from '@ionic/angular';
 import * as moment from 'moment';
+import { TasksService } from 'src/app/Services/Tasks/tasks.service';
 
 @Component({
   selector: 'app-view-tasks',

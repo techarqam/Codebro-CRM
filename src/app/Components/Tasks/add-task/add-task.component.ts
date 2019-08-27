@@ -3,10 +3,10 @@ import * as moment from 'moment';
 import { ModelsService } from '../../../Models/models';
 import { CommonService } from '../../../Services/Common/common.service';
 import { NavController } from '@ionic/angular';
-import { TasksService } from '../../../Sercvices/Tasks/tasks.service';
 import { ClientsService } from '../../../Services/Clients/clients.service';
 import * as firebase from 'firebase';
 import { MessagingService } from '../../../Services/Messaging/messaging.service';
+import { TasksService } from 'src/app/Services/Tasks/tasks.service';
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',

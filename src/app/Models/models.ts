@@ -70,4 +70,18 @@ export class ModelsService {
         timestamp: new FormControl(moment().format())
     });
 
+    invoice = new FormGroup({
+        startDate: new FormControl("", Validators.compose([
+            Validators.required,
+        ])),
+        endDate: new FormControl("", Validators.compose([
+            Validators.required,
+        ])),
+        amount: new FormControl("", Validators.compose([
+            Validators.required,
+        ])),
+        generatedBy: new FormControl(firebase.auth().currentUser.uid),
+        timestamp: new FormControl(moment().format())
+    });
+
 }

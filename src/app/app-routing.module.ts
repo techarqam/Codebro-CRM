@@ -21,12 +21,13 @@ import { EditFileComponent } from './Components/Files/edit-file/edit-file.compon
 import { FileDetailsComponent } from './Components/Files/file-details/file-details.component';
 import { ProjectFilesComponent } from './Components/Project/project-files/project-files.component';
 import { MainTimelineComponent } from './Components/Timeline/main-timeline/main-timeline.component';
-import { ViewTasksComponent } from './Conponents/Tasks/view-tasks/view-tasks.component';
 import { AddTaskComponent } from './Components/Tasks/add-task/add-task.component';
-import { EditTaskComponent } from './Conponents/Tasks/edit-task/edit-task.component';
 import { TaskDetailComponent } from './Components/Tasks/task-detail/task-detail.component';
 import { ListUsersComponent } from './Components/Messaging/list-users/list-users.component';
 import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.component';
+import { EditTaskComponent } from './Components/Tasks/edit-task/edit-task.component';
+import { ViewTasksComponent } from './Components/Tasks/view-tasks/view-tasks.component';
+import { CalendarComponent } from './Components/Calendar/calendar/calendar.component';
 
 const routes: Routes = [
   {
@@ -164,6 +165,12 @@ const routes: Routes = [
   {
     path: 'chat-box/:id',
     component: ChatBoxComponent,
+    canActivate: [AuthGuard]
+  },
+  //Calendar
+  {
+    path: 'calendar',
+    component: CalendarComponent,
     canActivate: [AuthGuard]
   },
 
