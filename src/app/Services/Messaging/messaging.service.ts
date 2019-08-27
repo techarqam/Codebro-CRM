@@ -28,5 +28,7 @@ export class MessagingService {
   getRecivedMessages(recieverId) {
     return this.db.collection(`Messages`, ref => ref.where("sender", "==", recieverId).where("reciever", "==", firebase.auth().currentUser.uid).orderBy('timestamp', 'asc')).snapshotChanges();
   }
-
+  registerToken(token, id) {
+    return this.db.collection(`Users`).doc(id).update({ token: token });
+  }
 }

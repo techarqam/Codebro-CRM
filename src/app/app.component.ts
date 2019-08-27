@@ -3,8 +3,7 @@ import { Platform, AlertController, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './Services/Auth/auth.service';
-import { tap } from 'rxjs/operators';
-import * as firebase from 'firebase';
+import { NotificationsService } from './Services/Notifications/notifications.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -74,12 +73,15 @@ export class AppComponent {
     public alertController: AlertController,
     private statusBar: StatusBar,
     public navCtrl: NavController,
+    public notiService: NotificationsService,
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.notiService.subscribeNotifications();
+      this.notiService.showMessages();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

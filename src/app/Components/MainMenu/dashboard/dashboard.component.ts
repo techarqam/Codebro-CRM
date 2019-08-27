@@ -5,6 +5,7 @@ import { AuthService } from '../../../Services/Auth/auth.service';
 import { ProjectService } from '../../../Services/Projects/project.service';
 import { ClientsService } from '../../../Services/Clients/clients.service';
 import { Chart } from "chart.js";
+import { NotificationsService } from 'src/app/Services/Notifications/notifications.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,11 +26,13 @@ export class DashboardComponent implements OnInit {
     public authService: AuthService,
     public projectService: ProjectService,
     public clientService: ClientsService,
+    public notiService: NotificationsService,
   ) {
     this.menuCtrl.enable(true);
     this.getClients();
     this.getProjects();
     this.getTasks();
+    this.notiService.getToken();
   }
 
   ngOnInit() {

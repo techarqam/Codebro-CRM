@@ -66,7 +66,8 @@ export class LoginComponent implements OnInit {
         this.gtSecond();
         this.commonService.presentToast("OTP Sent");
       }).catch(function (error) {
-        var msg = error.message;
+        let msg = error.message;
+        console.log(msg)
         this.commonService.presentToast(msg);
       });
   }

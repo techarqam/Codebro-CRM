@@ -52,6 +52,10 @@ import { EditTaskComponent } from './Components/Tasks/edit-task/edit-task.compon
 import { CalendarComponent } from './Components/Calendar/calendar/calendar.component';
 import { CalendarService } from './Services/Calendar/calendar.service';
 import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
+import { FCM } from '@ionic-native/fcm/ngx';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { NotificationsService } from './Services/Notifications/notifications.service';
 
 
 
@@ -108,6 +112,8 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
+    AngularFireMessagingModule,
+    AngularFireFunctionsModule,
     FormsModule,
     FullCalendarModule,
   ],
@@ -123,6 +129,8 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
     TasksService,
     MessagingService,
     CalendarService,
+    FCM,
+    NotificationsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
