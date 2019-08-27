@@ -51,6 +51,7 @@ import { ViewTasksComponent } from './Components/Tasks/view-tasks/view-tasks.com
 import { EditTaskComponent } from './Components/Tasks/edit-task/edit-task.component';
 import { CalendarComponent } from './Components/Calendar/calendar/calendar.component';
 import { CalendarService } from './Services/Calendar/calendar.service';
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 
 
 
@@ -108,6 +109,7 @@ import { CalendarService } from './Services/Calendar/calendar.service';
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     FormsModule,
+    FullCalendarModule,
   ],
   providers: [
     StatusBar,

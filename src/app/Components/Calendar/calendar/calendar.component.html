@@ -1,5 +1,24 @@
 <app-menu-header name="Calendar"></app-menu-header>
 <ion-content>
-  
-</ion-content>
 
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-md="10" offset-md="1">
+
+
+                <!-- <div class='app-top'>
+                    <ion-button (click)='toggleVisible()'>toggle visible</ion-button>
+                    <ion-button (click)='toggleWeekends()'>toggle weekends</ion-button> 
+                    <ion-button (click)='gotoPast()'>go to a date in the past</ion-button>
+                </div> -->
+
+                <div class='app-calendar' *ngIf="calendarVisible">
+                    <full-calendar #calendar  [plugins]="calendarPlugins"
+                        [weekends]="calendarWeekends" [events]="calendarEvents" (dateClick)="handleDateClick($event)">
+                    </full-calendar>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>
