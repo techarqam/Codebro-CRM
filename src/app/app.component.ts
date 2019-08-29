@@ -11,13 +11,6 @@ import { NotificationsService } from './Services/Notifications/notifications.ser
 export class AppComponent {
   leftBrace: string = "{";
   rightBrace: string = "}";
-  pendingTasks = [
-    "Timeline Addition",
-    "Notifications",
-    "Chat order",
-    "dashboard task chart",
-    "generating documents",
-  ]
   public appPages = [
     {
       title: 'Dashboard',
