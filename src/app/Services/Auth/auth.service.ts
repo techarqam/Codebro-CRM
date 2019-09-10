@@ -5,9 +5,6 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { first } from 'rxjs/operators';
 import * as moment from 'moment';
 import * as firebase from 'firebase';
-import { tap } from 'rxjs/operators';
-import { CommonService } from '../Common/common.service';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -73,4 +70,15 @@ export class AuthService {
     })
 
   }
+
+  //Email Login functions 
+
+
+  loginM(data) {
+    return this.fireAuth.auth.signInWithEmailAndPassword(data.email, data.pass)
+  }
+
+
+
+
 }

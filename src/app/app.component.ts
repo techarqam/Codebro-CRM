@@ -25,6 +25,11 @@ export class AppComponent {
       icon: 'analytics'
     },
     {
+      title: 'Users',
+      url: '/all-users',
+      icon: 'add'
+    },
+    {
       title: 'Timeline',
       url: '/timeline',
       icon: 'pulse'

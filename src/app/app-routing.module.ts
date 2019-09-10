@@ -28,6 +28,9 @@ import { ChatBoxComponent } from './Components/Messaging/chat-box/chat-box.compo
 import { EditTaskComponent } from './Components/Tasks/edit-task/edit-task.component';
 import { ViewTasksComponent } from './Components/Tasks/view-tasks/view-tasks.component';
 import { CalendarComponent } from './Components/Calendar/calendar/calendar.component';
+import { EmailLoginComponent } from './Components/Auth/email-login/email-login.component';
+import { AllUsersComponent } from './Components/Users/all-users/all-users.component';
+import { AddUserComponent } from './Components/Users/add-user/add-user.component';
 
 const routes: Routes = [
   {
@@ -35,10 +38,19 @@ const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full'
   },
-
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'all-users',
+    component: AllUsersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-user',
+    component: AddUserComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -49,6 +61,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [NegAuthGuard]
+  },
+  {
+    path: 'email-login',
+    component: EmailLoginComponent,
     canActivate: [NegAuthGuard]
   },
   {

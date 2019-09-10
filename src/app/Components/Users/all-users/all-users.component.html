@@ -1,5 +1,6 @@
-<app-menu-header name="Messaging"></app-menu-header>
+<app-menu-header name="Users"></app-menu-header>
 <ion-content>
+
   <ion-grid [hidden]="showLoader">
     <ion-row>
       <ion-col size-md="9" size="12">
@@ -20,15 +21,31 @@
             <ion-card-title>{{u.name}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-item>
-              <ion-label slot="start">Admin</ion-label>
-              <p slot="end">{{u.isAdmin}}</p>
-            </ion-item>
-            <p class="timestamp">{{u.timestamp}}</p>
+            <!-- <p class="timestamp">{{u.timestamp}}</p> -->
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/add-user">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 
 </ion-content>

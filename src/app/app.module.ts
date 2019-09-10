@@ -56,6 +56,10 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { NotificationsService } from './Services/Notifications/notifications.service';
+import { EmailLoginComponent } from './Components/Auth/email-login/email-login.component';
+import { UserService } from './Services/Users/user.service';
+import { AllUsersComponent } from './Components/Users/all-users/all-users.component';
+import { AddUserComponent } from './Components/Users/add-user/add-user.component';
 
 
 
@@ -64,6 +68,7 @@ import { NotificationsService } from './Services/Notifications/notifications.ser
     AppComponent,
     LoginSplashComponent,
     LoginComponent,
+    EmailLoginComponent,
     ProfileComponent,
     DashboardComponent,
     MenuHeaderComponent,
@@ -98,6 +103,10 @@ import { NotificationsService } from './Services/Notifications/notifications.ser
     ChatBoxComponent,
     // Calendar
     CalendarComponent,
+    //Users
+    AllUsersComponent,
+    AddUserComponent,
+
   ],
   entryComponents: [
     MenuHeaderComponent,
@@ -131,6 +140,7 @@ import { NotificationsService } from './Services/Notifications/notifications.ser
     CalendarService,
     FCM,
     NotificationsService,
+    UserService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]

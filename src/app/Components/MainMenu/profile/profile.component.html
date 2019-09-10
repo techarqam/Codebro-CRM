@@ -21,9 +21,32 @@
 
 
         <br>
-        <h3>{{user.name}} </h3>
-        <p> {{user.phone}} </p>
-        <p> {{user.mail}} </p>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12" size-md="6" offset-md="3">
+                    <ion-card>
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-label slot="start">Name</ion-label>
+                                <p slot="end">{{user.name}}</p>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label slot="start">Email</ion-label>
+                                <p slot="end">{{user.email}}</p>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label slot="start">Admin</ion-label>
+                                <p slot="end">{{user.isAdmin}}</p>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label slot="start">Status</ion-label>
+                                <p slot="end">{{user.status}}</p>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
     </div>
 

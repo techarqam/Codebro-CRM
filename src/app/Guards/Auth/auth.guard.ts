@@ -29,7 +29,7 @@ export class AuthGuard implements CanActivate {
         if (user) {
           resolve(true);
         } else {
-          this.navCtrl.navigateRoot(['/login-splash']);
+          this.navCtrl.navigateRoot(['/email-login']);
           resolve(false);
         }
       });
