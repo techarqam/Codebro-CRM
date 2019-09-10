@@ -62,10 +62,10 @@ export class DashboardComponent implements OnInit {
             label: "# of tasks",
             data: [12, 19],
             backgroundColor: [
-              "rgba(100, 192, 32, 0.8)",
-              "rgba(255, 99, 132, 0.8)",
+              "rgba(56, 128, 255, 0.6)",
+              "rgba(240, 65, 65, 0.6)",
             ],
-            hoverBackgroundColor: ["#64c020", "#FF6384"]
+            hoverBackgroundColor: ["#3880ff", "#f04141"]
           }
         ]
       }

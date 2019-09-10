@@ -60,6 +60,7 @@ import { EmailLoginComponent } from './Components/Auth/email-login/email-login.c
 import { UserService } from './Services/Users/user.service';
 import { AllUsersComponent } from './Components/Users/all-users/all-users.component';
 import { AddUserComponent } from './Components/Users/add-user/add-user.component';
+import { Firebase } from '@ionic-native/firebase/ngx';
 
 
 
@@ -141,6 +142,7 @@ import { AddUserComponent } from './Components/Users/add-user/add-user.component
     FCM,
     NotificationsService,
     UserService,
+    Firebase,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
