@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Firebase } from '@ionic-native/firebase/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
 import * as firebase from 'firebase';
 import { AngularFireMessaging } from '@angular/fire/messaging';
@@ -8,6 +9,7 @@ import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MessagingService } from '../Messaging/messaging.service';
 import { CommonService } from '../Common/common.service';
+import { Platform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -15,47 +17,44 @@ import { CommonService } from '../Common/common.service';
 export class NotificationsService {
 
   constructor(
-    private fcm: FCM,
-    private afMessaging: AngularFireMessaging,
-    private fun: AngularFireFunctions,
-    public messagingService: MessagingService,
-    public commonService: CommonService,
-    public db: AngularFirestore,
-  ) {
-    // const _messaging = firebase.messaging();
-    // _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
-    // _messaging.onMessage = _messaging.onMessage.bind(_messaging);
+    public firebaseNative: Firebase,
+    public afs: AngularFirestore,
+    private platform: Platform
+  ) { }
+
+  // Get permission from the user
+  async getToken() {
+    let token;
+
+    if (this.platform.is('android')) {
+      token = await this.firebaseNative.getToken()
+    }
+
+    if (this.platform.is('ios')) {
+      token = await this.firebaseNative.getToken();
+      await this.firebaseNative.grantPermission();
+    }
+
+    return this.saveTokenToFirestore(token)
   }
 
+  // Save the token to firestore
+  private saveTokenToFirestore(token) {
+    if (!token) return;
 
-  getToken() {
-    this.fcm.getToken().then(token => {
-      console.log(token);
-      let id = firebase.auth().currentUser.uid;
-      this.messagingService.registerToken(token, id).then(() => {
-        // this.commonService.presentToast("Notifications Enabled");
-      })
-    });
+    const devicesRef = this.afs.collection('devices')
+
+    const docData = {
+      token,
+      userId: 'testUser',
+    }
+
+    return devicesRef.doc(token).set(docData)
   }
 
-  subscribeNotifications() {
-    this.fcm.onNotification().subscribe(data => {
-      console.log(data);
-      if (data.wasTapped) {
-        this.commonService.presentToast('Received in background');
-      } else {
-        this.commonService.presentToast('Received in foreground');
-      }
-    });
-  }
-
-  showMessages(): Observable<any> {
-    return this.afMessaging.messages.pipe(
-      tap(msg => {
-        const body: any = (msg as any).notification.title;
-        this.commonService.presentToast(body);
-      })
-    );
+  // Listen to incoming FCM messages
+  listenToNotifications() {
+    return this.firebaseNative.onNotificationOpen()
   }
 
 }

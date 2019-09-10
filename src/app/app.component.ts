@@ -4,6 +4,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './Services/Auth/auth.service';
 import { NotificationsService } from './Services/Notifications/notifications.service';
+import { CommonService } from './Services/Common/common.service';
+import { tap } from 'rxjs/operators';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -11,13 +14,6 @@ import { NotificationsService } from './Services/Notifications/notifications.ser
 export class AppComponent {
   leftBrace: string = "{";
   rightBrace: string = "}";
-  pendingTasks = [
-    "Timeline Addition",
-    "Notifications",
-    "Chat order",
-    "dashboard task chart",
-    "generating documents",
-  ]
   public appPages = [
     {
       title: 'Dashboard',
@@ -79,15 +75,24 @@ export class AppComponent {
     private statusBar: StatusBar,
     public navCtrl: NavController,
     public notiService: NotificationsService,
+    public commonService: CommonService,
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.notiService.subscribeNotifications();
-      this.notiService.showMessages();
-      this.statusBar.styleDefault();
+      this.notiService.getToken()
+
+      // Listen to incoming messages
+      this.notiService.listenToNotifications().pipe(
+        tap(msg => {
+          console.log(msg)
+          this.commonService.presentToast(msg.body)
+        })
+      )
+        .subscribe()
+
       this.splashScreen.hide();
     });
   }
